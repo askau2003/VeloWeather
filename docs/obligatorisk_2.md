@@ -32,4 +32,3 @@ Afleveres på Itslearning senest **5/5 kl. 12.00**.
 Opgaven er individuel.  
 Bedømmes med **bestået** / **ikke bestået**.  
 I får skriftlig feedback på opgaven på Itslearning.
-

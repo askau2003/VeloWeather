@@ -1,0 +1,13 @@
+[project]
+name = "VeloWeather"
+version = "0.1.0"
+description = "VeloWeather - Vejr- og påklædningsapp til racercyklister "
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.136.1",
+    "uvicorn>=0.46.0",
+    "requests>=2.34.0",
+    "streamlit>=1.57.0",
+    "matplotlib>=3.10.9",
+]
