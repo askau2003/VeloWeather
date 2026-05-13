@@ -3,30 +3,32 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import datetime
 
 API_BASE = "http://localhost:8000"
 
-st.set_page_config(page_title="Cykelvejr", page_icon="🚴", layout="wide")
-st.title("🚴 Cykelvejr")
+st.set_page_config(page_title="VeloWeather", page_icon="🚴", layout="wide")
+st.title("VeloWeather")
 
+# Gem city som variabel, så den kan bruges som parameter på api kaldet
 city = st.text_input("Søg efter by", placeholder="København")
 
 if city:
     with st.spinner("Henter vejrdata..."):
-        res = requests.get(f"{API_BASE}/api/weather/{city}")
+        req = requests.get(f"{API_BASE}/api/weather/{city}")
 
-    if res.status_code == 404:
+    if req.status_code == 404:
         st.error(f"Kunne ikke finde by: '{city}'")
         st.stop()
-    elif res.status_code != 200:
-        st.error("Noget gik galt — prøv igen")
+    elif req.status_code != 200:
+        st.error("Noget gik galt - prøv igen")
         st.stop()
 
-    data = res.json()
+    data = req.json()
     df = pd.DataFrame(data["hourly"])
     df["time"] = pd.to_datetime(df["time"])
 
-    st.subheader(f"Vejr i {data['city']} — i dag")
+    st.subheader(f"Vejr i {data['city']} - {datetime.datetime.now().strftime("%d-%m-%Y %H:%M")}") # lokal tid
 
     # --- Metrics ---
     now = df.iloc[pd.Timestamp.now().hour]
@@ -38,7 +40,7 @@ if city:
 
     def fmt_xaxis(ax):
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
-        ax.xaxis.set_major_locator(mdates.HourLocator(interval=3))
+        ax.xaxis.set_major_locator(mdates.HourLocator(interval=2))
         ax.tick_params(axis="x", rotation=45)
         ax.grid(True, alpha=0.3)
 
@@ -72,7 +74,7 @@ if city:
         ax.bar(df["time"], df["precipitation_mm"], width=0.03, color="cornflowerblue", label="Nedbør (mm)")
         ax2 = ax.twinx()
         ax2.plot(df["time"], df["precipitation_probability_pct"], color="navy", linestyle="--", alpha=0.6, label="Sandsynlighed (%)")
-        ax2.set_ylim(0, 100)
+        ax2.set_ylim(0, 100) # chance for regn i %
         ax.set_title("Nedbør")
         lines1, labels1 = ax.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
