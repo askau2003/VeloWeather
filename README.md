@@ -3,7 +3,7 @@
 ## How to run
 
 ``` Powershell
-make dev
+docker compose up
 ```
 
 ## Type checks & Code analysis
