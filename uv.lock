@@ -1309,7 +1309,6 @@ dependencies = [
     { name = "google-genai" },
     { name = "matplotlib" },
     { name = "pandas-stubs" },
-    { name = "pytest" },
     { name = "python-dotenv" },
     { name = "requests" },
     { name = "streamlit" },
@@ -1319,6 +1318,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "mypy" },
+    { name = "pytest" },
     { name = "ruff" },
 ]
 
@@ -1328,7 +1328,6 @@ requires-dist = [
     { name = "google-genai", specifier = ">=2.6.0" },
     { name = "matplotlib", specifier = ">=3.10.9" },
     { name = "pandas-stubs", specifier = ">=3.0.0.260204" },
-    { name = "pytest", specifier = ">=9.0.3" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "requests", specifier = ">=2.34.0" },
     { name = "streamlit", specifier = ">=1.57.0" },
@@ -1338,6 +1337,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "mypy", specifier = ">=2.1.0" },
+    { name = "pytest", specifier = ">=9.0.3" },
     { name = "ruff", specifier = ">=0.15.15" },
 ]
 

@@ -12,7 +12,6 @@ dependencies = [
     "matplotlib>=3.10.9",
     "google-genai>=2.6.0",
     "python-dotenv>=1.2.2",
-    "pytest>=9.0.3",
     "pandas-stubs>=3.0.0.260204",
 ]
 
@@ -20,4 +19,5 @@ dependencies = [
 dev = [
     "mypy>=2.1.0",
     "ruff>=0.15.15",
+    "pytest>=9.0.3",
 ]

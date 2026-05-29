@@ -2,10 +2,13 @@ import requests
 from fastapi import HTTPException
 import numpy as np
 
+# DOCS
+# alle params-værdier skal være str. requests sender dem alligevel som strings over HTTTP. (mypy)
+
 
 def get_coordinates(city: str) -> tuple[float, float, str]:
     url = "https://geocoding-api.open-meteo.com/v1/search"
-    params = {"name": city, "count": 1, "language": "en", "format": "json"}
+    params = {"name": city, "count": "1", "language": "en", "format": "json"}
     response = requests.get(url, params=params)
     response.raise_for_status()  # Raises HTTPError, if one occurred.
     data = response.json()
@@ -22,8 +25,8 @@ def get_weather(city: str) -> dict:
 
     url = "https://api.open-meteo.com/v1/forecast"
     params = {
-        "latitude": lat,
-        "longitude": lon,
+        "latitude": str(lat),
+        "longitude": str(lon),
         "hourly": (
             "temperature_2m,"
             "precipitation_probability,"
@@ -33,7 +36,7 @@ def get_weather(city: str) -> dict:
             "wind_direction_10m,"
             "uv_index,"
         ),
-        "forecast_days": 1,
+        "forecast_days": "1",
         "timezone": "auto",
     }
     response = requests.get(url, params=params)

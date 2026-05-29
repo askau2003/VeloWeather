@@ -39,4 +39,4 @@ Vær kort og konkret — brug bullet points. Svar på dansk.
         model="gemini-3.5-flash",
         contents=prompt,
     )
-    return response.text
+    return response.text or "" # response.text returnerer str | None
