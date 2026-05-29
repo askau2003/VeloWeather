@@ -1,13 +1,13 @@
-.PHONY: backend frontend dev
-
-backend:
-	uv run uvicorn velo_weather.backend.main:app \
-		--reload \
-		--reload-dir velo_weather
-
-frontend:
-	uv run streamlit run velo_weather/frontend/app.py \
-		--server.runOnSave true
-
-dev:
-	make -j2 backend frontend
+lint:
+	uv run ruff check velo_weather
+ 
+format:
+	uv run ruff format velo_weather
+ 
+typecheck:
+	uv run mypy velo_weather
+ 
+test:
+	uv run pytest
+ 
+check: lint typecheck test
