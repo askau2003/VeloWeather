@@ -15,3 +15,9 @@ Before committing, use:
 ``` Powershell
 make check
 ```
+
+For fixing **ruff** errors fast, use:
+
+``` Powershell
+make fix
+```

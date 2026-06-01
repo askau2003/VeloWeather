@@ -1,4 +1,3 @@
-import numpy as np
 from velo_weather.backend.weather import feels_like
 
 

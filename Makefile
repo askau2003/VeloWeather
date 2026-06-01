@@ -1,11 +1,14 @@
 lint:
-	uv run ruff check velo_weather
+	uv run ruff check .
  
 format:
-	uv run ruff format velo_weather
+	uv run ruff format .
+ 
+fix:
+	ruff check . --fix
  
 typecheck:
-	uv run mypy velo_weather
+	uv run mypy .
  
 test:
 	uv run pytest
