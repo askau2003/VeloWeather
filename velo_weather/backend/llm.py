@@ -36,7 +36,7 @@ Vær kort og konkret — brug bullet points. Svar på dansk.
 """.strip()
 
     response = _client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-2.5-flash",
         contents=prompt,
     )
     return response.text or "" # response.text returnerer str | None
