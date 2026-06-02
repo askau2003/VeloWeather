@@ -66,7 +66,7 @@ def get_weather(city: str) -> dict:
     }
 
 
-def feels_like(temp_c, wind_kmh):
+def feels_like(temp_c: float, wind_kmh: float) -> float:
     temp_c = np.asarray(temp_c)
     wind_kmh = np.asarray(wind_kmh)
 
