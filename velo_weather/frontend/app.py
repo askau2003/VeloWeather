@@ -34,7 +34,7 @@ if city:
     )  # lokal tid
 
     # --- Metrics ---
-    now = df.iloc[pd.Timestamp.now().hour]
+    now = df.iloc[pd.Timestamp.now().hour] # integer-location. Bruges til at få den aktuelle tid.
     col1, col2, col3, col4 = st.columns(4)
     col1.metric(
         "🌡️ Temperatur",
@@ -53,7 +53,7 @@ if city:
     )
     col4.metric("☀️ UV-indeks", now["uv_index"])
 
-    def fmt_xaxis(ax):
+    def fmt_xaxis(ax): # Hjælpe funktion til at format xakser
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
         ax.xaxis.set_major_locator(mdates.HourLocator(interval=2))
         ax.tick_params(axis="x", rotation=45)
